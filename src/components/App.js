@@ -7,7 +7,7 @@ class App extends Component {
     this.state = {
       renderBall: false, //variable needed to be changed
       posi: 0,
-      ballPosition: { left: "0px" },
+      ballPosition: { left: "0px" }
     };
     this.renderChoice = this.renderChoice.bind(this);
     this.buttonClickHandler = this.buttonClickHandler.bind(this);
@@ -28,10 +28,12 @@ class App extends Component {
 
   //bind ArrowRight keydown event
   componentDidMount() {
-    document.addEventListener("keydown", function (event) {
-      if (event.keyCode === 39) {
-        this.setState({ posi: posi + 5 });
-        this.setState({ ballPosition: `${posi}px` });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") {
+        this.setState((state) => ({ posi: state.posi + 5 }));
+        this.setState((state) => ({
+          ballPosition: { left: `${state.posi}px` }
+        }));
       }
     });
   }
